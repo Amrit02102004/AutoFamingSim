@@ -16,11 +16,12 @@
       background-repeat: no-repeat;
       background-attachment: fixed;
     }
+
     .water-bg {
       background-image: url('waterfall_gif.gif');
-       /* Background image for moisture below 20 */
+      /* Background image for moisture below 20 */
     }
-    .desert-bg{
+    .desert-bg {
       background-image: url('desert.png');
     }
 
@@ -88,7 +89,6 @@
       height: 100%;
       border-radius: 50%;
       object-fit: cover;
-      
     }
 
     .num {
@@ -108,7 +108,7 @@
         <img src="e888d4feff8fd5ff63a965471a94b874.gif" class="number-image" id="image3" alt="Plant Image">
       </div>
     </div>
-    <div class="num">Moisture Level: <span class="counter" id="numberDisplay" data-target="45">45</span></div>
+    <div class="num" data-target="70">Moisture Level: <span class="counter" id="numberDisplay"></span></div>
   </div>
 
   <script>
@@ -116,30 +116,26 @@
       var num = document.getElementById('numberDisplay');
       var body = document.body;
       
-      var number = parseInt(num.innerText);
+      var target = parseInt(document.querySelector('.num').getAttribute('data-target'));
       function updateBackground() {
-        if (number <= 25) {
-          body.classList.add("desert-bg"); // Apply the second background for moisture below 20
+        if (target <= 25) {
+          body.classList.add("desert-bg");
         } else {
-          body.classList.add("water-bg"); // Remove the second background for moisture above 20
+          body.classList.add("water-bg");
         }
       }
       updateBackground();
-      if (number <= 25) {
+      if (target <= 25) {
         document.getElementById('image1').style.display = 'block';
-      } else if (number >= 70) {
+      } else if (target >= 70) {
         document.getElementById('image2').style.display = 'block';
       } else {
         document.getElementById('image3').style.display = 'block';
       }
       
-
-      
-      
-
-      const progressFill = document.getElementsByClassName('progressFill')[0];
+      const progressFill = document.querySelector('.progressFill');
       const block = document.getElementsByClassName('block');
-      for (var i = 1; i < number; i++) {
+      for (var i = 1; i < target; i++) {
         progressFill.innerHTML += "<div class='block'></div>";
         block[i].style.transform = "rotate(" + 3.6 * i + "deg)";
         block[i].style.animationDelay = `${i/50}s`;
@@ -147,7 +143,6 @@
 
       const counter = document.querySelector('.counter');
       counter.innerText = target;
-      const target = +counter.getAttribute('data-target');
 
       const NumberCounter = () => {
         const value = +counter.innerText;
