@@ -28,6 +28,9 @@ body {
   .desert-bg {
     background-image: url('{% static "MyApp/images/desert.png" %}');
   }
+  .default1{
+    background-image: url('{% static "MyApp/images/default_bg.png" %}');
+  }
   
   .flexy {
     display: flex;
@@ -168,7 +171,7 @@ document.addEventListener("DOMContentLoaded", function () {
     updateMoistureLevel();
 
     // Set up an interval to update the moisture level every 5 seconds
-    setInterval(updateMoistureLevel, 5000);
+    setInterval(updateMoistureLevel, 2000);
 });
 
     // document.addEventListener("DOMContentLoaded", function () {
