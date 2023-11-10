@@ -19,9 +19,17 @@ from django.urls import path
 from Farming import views
 from django.conf import settings
 from django.conf.urls.static import static
+# urls.py
+from django.urls import path
+from .views import arduino_data
+
+urlpatterns = [
+    # Other URL patterns
+]
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('arduino-data/', arduino_data, name='arduino_data'),
     path('',views.homePage)
 ]
 if settings.DEBUG:
